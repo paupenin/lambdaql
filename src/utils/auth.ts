@@ -36,7 +36,7 @@ export const getUserByUsernameAndPassword = async (
   const user = rows[0] as User;
 
   // Check the password matches
-  const match = await bcrypt.compare(password, user.password);
+  const match = await bcrypt.compare(password, user.password as string);
 
   if (!match) return null;
 

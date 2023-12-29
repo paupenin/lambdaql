@@ -96,8 +96,7 @@ export const handler = async (
 
     return { statusCode: 405, body: "Method Not Allowed" };
   } catch (err) {
-    console.log((err as Error).message);
-    // console.error(err);
+    console.error(err);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: (err as Error).message }),
