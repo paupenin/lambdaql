@@ -45,16 +45,18 @@ describe('Update Operation', () => {
       }));
   
       // Mock the GraphQL client get method
-      jest.spyOn(graphqlClient, "set").mockImplementation(async (token, key) => true);
+      jest.spyOn(graphqlClient, "batchSet").mockImplementation(async (token, items) => true);
       
       // Mock the event
       const mockEvent = {
         requestContext: { http: { method: 'PUT' } },
-        body: JSON.stringify([
-          { key: 'itemToUpdate', value: 'updatedValue' },
-          { key: 'itemToUpdate2', value: 'updatedValue2' },
-          { key: 'itemToUpdate3', value: 'updatedValue3' },
-        ]),
+        body: JSON.stringify({
+          items: [
+            { key: 'itemToUpdate', value: 'updatedValue' },
+            { key: 'itemToUpdate2', value: 'updatedValue2' },
+            { key: 'itemToUpdate3', value: 'updatedValue3' },
+          ]
+        }),
         headers: {
           Authorization: 'Bearer valid.token.here',
         },
