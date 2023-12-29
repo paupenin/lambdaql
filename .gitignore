@@ -1,0 +1,23 @@
+# Dependencies
+/node_modules
+
+# Compiled files
+/dist
+.build
+.serverless
+
+# Environment variables
+.env
+.env.production
+
+# Editor directories and files
+.idea
+*.code-workspace
+*.sublime-workspace
+*.sublime-project
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store

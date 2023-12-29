@@ -1,0 +1,39 @@
+org: paupenin
+app: apollo-lambda
+service: apollo-lambda
+provider:
+  name: aws
+  runtime: nodejs16.x
+  httpApi:
+    cors: true
+functions:
+  graphql:
+    handler: src/graphql/lambda.graphqlHandler
+    events:
+      - httpApi:
+          path: /graphql
+          method: POST
+  crud:
+    handler: src/crud/lambda.handler
+    events:
+      - httpApi:
+          path: /
+          method: POST
+      - httpApi:
+          path: /
+          method: GET
+      - httpApi:
+          path: /
+          method: PUT
+      - httpApi:
+          path: /
+          method: DELETE
+  auth:
+    handler: src/auth/lambda.handler
+    events:
+      - httpApi:
+          path: /auth
+          method: POST
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
